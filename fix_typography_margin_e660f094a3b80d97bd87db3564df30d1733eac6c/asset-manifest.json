@@ -1,0 +1,40 @@
+{
+  "files": {
+    "0.6a070d0e.iframe.bundle.js": "./0.6a070d0e.iframe.bundle.js",
+    "0.6a070d0e.iframe.bundle.js.map": "./0.6a070d0e.iframe.bundle.js.map",
+    "1.0ed1117e.iframe.bundle.js": "./1.0ed1117e.iframe.bundle.js",
+    "2.56c3685e.iframe.bundle.js": "./2.56c3685e.iframe.bundle.js",
+    "libphonenumber.js": "./libphonenumber.552029b5.iframe.bundle.js",
+    "main.css": "./main.css",
+    "main.js": "./main.7cf7f88a.iframe.bundle.js",
+    "runtime~main.js": "./runtime~main.bd4bedd8.iframe.bundle.js",
+    "vendors~libphonenumber.js": "./vendors~libphonenumber.b3ff48a4.iframe.bundle.js",
+    "vendors~main.css": "./vendors~main.css",
+    "vendors~main.js": "./vendors~main.e8d7f9b9.iframe.bundle.js",
+    "vendors~main.js.map": "./vendors~main.e8d7f9b9.iframe.bundle.js.map",
+    "8.ce8683df.iframe.bundle.js": "./8.ce8683df.iframe.bundle.js",
+    "8.ce8683df.iframe.bundle.js.map": "./8.ce8683df.iframe.bundle.js.map",
+    "9.5238001a.iframe.bundle.js": "./9.5238001a.iframe.bundle.js",
+    "10.37f4a413.iframe.bundle.js": "./10.37f4a413.iframe.bundle.js",
+    "11.2af71e24.iframe.bundle.js": "./11.2af71e24.iframe.bundle.js",
+    "11.2af71e24.iframe.bundle.js.map": "./11.2af71e24.iframe.bundle.js.map",
+    "12.e9ff44d5.iframe.bundle.js": "./12.e9ff44d5.iframe.bundle.js",
+    "0.6a070d0e.iframe.bundle.js.LICENSE.txt": "./0.6a070d0e.iframe.bundle.js.LICENSE.txt",
+    "11.2af71e24.iframe.bundle.js.LICENSE.txt": "./11.2af71e24.iframe.bundle.js.LICENSE.txt",
+    "8.ce8683df.iframe.bundle.js.LICENSE.txt": "./8.ce8683df.iframe.bundle.js.LICENSE.txt",
+    "iframe.html": "./iframe.html",
+    "main.css.map": "./main.css.map",
+    "precache-manifest.3dc7b73a3fa6ff6cda9d4f47c065abcb.js": "./precache-manifest.3dc7b73a3fa6ff6cda9d4f47c065abcb.js",
+    "service-worker.js": "./service-worker.js",
+    "static/media/index.module.css": "./static/media/flag-icon_size_l@2x.efa0753e.png",
+    "vendors~main.css.map": "./vendors~main.css.map",
+    "vendors~main.e8d7f9b9.iframe.bundle.js.LICENSE.txt": "./vendors~main.e8d7f9b9.iframe.bundle.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "runtime~main.bd4bedd8.iframe.bundle.js",
+    "vendors~main.css",
+    "vendors~main.e8d7f9b9.iframe.bundle.js",
+    "main.css",
+    "main.7cf7f88a.iframe.bundle.js"
+  ]
+}
