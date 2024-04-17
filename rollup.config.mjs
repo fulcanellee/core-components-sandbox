@@ -153,6 +153,7 @@ const modern = {
     plugins: [
         ...baseConfig.plugins,
         multiInputPlugin,
+        ignoreCss(),
         typescript({
             outDir: 'dist/modern',
             tsconfig: (resolvedConfig) => ({
@@ -162,7 +163,7 @@ const modern = {
             }),
         }),
         json(),
-        postcssPlugin,
+        processCss(),
         assetsCopyPlugin('dist/modern'),
     ],
 };
