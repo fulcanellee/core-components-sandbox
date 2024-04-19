@@ -168,6 +168,54 @@ const modern = {
 };
 
 /**
+ * Модификация modern сборки
+ * - ES2020
+ * - es модули
+ * - css модули в сыром виде (css классы не обфусцированны)
+ */
+const modernPCSSRaw = {
+    ...baseConfig,
+    output: [
+        {
+            dir: 'dist/modern-pcss-raw',
+            format: 'esm',
+            generatedCode: 'es2015',
+            plugins: [
+                addCssImports({ currentPackageDir }),
+                coreComponentsResolver({ importFrom: 'modern-pcss-raw' }),
+                packagesTypingResolver(),
+            ],
+            hoistTransitiveImports: false,
+        },
+    ],
+    plugins: [
+        ...baseConfig.plugins,
+        multiInputPlugin,
+        typescript({
+            outDir: 'dist/modern-pcss-raw',
+            tsconfig: (resolvedConfig) => ({
+                ...resolvedConfig,
+                target: ScriptTarget.ES2020,
+                tsBuildInfoFile: 'tsconfig.tsbuildinfo',
+            }),
+        }),
+        json(),
+        postcss.default({
+            modules: {
+                generateScopedName: function(name) {
+                    return name;
+                }
+            },
+            extract: true,
+            separateCssFiles: true,
+            packageName: pkg.name,
+            packageVersion: pkg.version,
+        }),
+        assetsCopyPlugin('dist/modern-pcss-raw'),
+    ],
+};
+
+/**
  * Сборка ES5 с commonjs модулями.
  * Css-модули поставляются как есть, не компилируются.
  */
@@ -271,7 +319,7 @@ const root = {
 const configs = (
     process.env.BUILD_MODERN_ONLY === 'true'
         ? [modern, root]
-        : [es5, modern, esm, currentComponentName !== 'themes' && cssm, root]
+        : [es5, modern, modernPCSSRaw, esm, currentComponentName !== 'themes' && cssm, root]
 ).filter(Boolean);
 
 export default configs;
