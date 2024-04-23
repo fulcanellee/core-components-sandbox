@@ -173,16 +173,16 @@ const modern = {
  * - es модули
  * - css модули в сыром виде (css классы не обфусцированны)
  */
-const modernPCSSRaw = {
+const cssm = {
     ...baseConfig,
     output: [
         {
-            dir: 'dist/modern-pcss-raw',
+            dir: 'dist/cssm',
             format: 'esm',
             generatedCode: 'es2015',
             plugins: [
                 addCssImports({ currentPackageDir }),
-                coreComponentsResolver({ importFrom: 'modern-pcss-raw' }),
+                coreComponentsResolver({ importFrom: 'cssm' }),
                 packagesTypingResolver(),
             ],
             hoistTransitiveImports: false,
@@ -192,7 +192,7 @@ const modernPCSSRaw = {
         ...baseConfig.plugins,
         multiInputPlugin,
         typescript({
-            outDir: 'dist/modern-pcss-raw',
+            outDir: 'dist/cssm',
             tsconfig: (resolvedConfig) => ({
                 ...resolvedConfig,
                 target: ScriptTarget.ES2020,
@@ -211,7 +211,7 @@ const modernPCSSRaw = {
             packageName: pkg.name,
             packageVersion: pkg.version,
         }),
-        assetsCopyPlugin('dist/modern-pcss-raw'),
+        assetsCopyPlugin('dist/cssm'),
     ],
 };
 
@@ -219,35 +219,35 @@ const modernPCSSRaw = {
  * Сборка ES5 с commonjs модулями.
  * Css-модули поставляются как есть, не компилируются.
  */
-const cssm = {
-    ...baseConfig,
-    output: [
-        {
-            esModule: true,
-            dir: 'dist/cssm',
-            format: 'cjs',
-            interop: 'compat',
-            dynamicImportInCjs: false,
-            plugins: [coreComponentsResolver({ importFrom: 'cssm' }), packagesTypingResolver()],
-            hoistTransitiveImports: false,
-        },
-    ],
-    plugins: [
-        ...baseConfig.plugins,
-        multiInputPlugin,
-        ignoreCss(),
-        typescript({
-            outDir: 'dist/cssm',
-            tsconfig: (resolvedConfig) => ({
-                ...resolvedConfig,
-                tsBuildInfoFile: 'tsconfig.tsbuildinfo',
-            }),
-        }),
-        json(),
-        processCss(),
-        assetsCopyPlugin('dist/cssm'),
-    ],
-};
+// const cssm = {
+//     ...baseConfig,
+//     output: [
+//         {
+//             esModule: true,
+//             dir: 'dist/cssm',
+//             format: 'cjs',
+//             interop: 'compat',
+//             dynamicImportInCjs: false,
+//             plugins: [coreComponentsResolver({ importFrom: 'cssm' }), packagesTypingResolver()],
+//             hoistTransitiveImports: false,
+//         },
+//     ],
+//     plugins: [
+//         ...baseConfig.plugins,
+//         multiInputPlugin,
+//         ignoreCss(),
+//         typescript({
+//             outDir: 'dist/cssm',
+//             tsconfig: (resolvedConfig) => ({
+//                 ...resolvedConfig,
+//                 tsBuildInfoFile: 'tsconfig.tsbuildinfo',
+//             }),
+//         }),
+//         json(),
+//         processCss(),
+//         assetsCopyPlugin('dist/cssm'),
+//     ],
+// };
 
 /**
  * Сборка ES5 с esm модулями.
@@ -319,7 +319,7 @@ const root = {
 const configs = (
     process.env.BUILD_MODERN_ONLY === 'true'
         ? [modern, root]
-        : [es5, modern, modernPCSSRaw, esm, currentComponentName !== 'themes' && cssm, root]
+        : [es5, modern, esm, currentComponentName !== 'themes' && cssm, root]
 ).filter(Boolean);
 
 export default configs;
