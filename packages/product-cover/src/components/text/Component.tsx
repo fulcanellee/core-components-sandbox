@@ -50,6 +50,11 @@ export type TextProps = {
     numberOfСards?: number;
 
     /**
+     * Управление ориентацией стопки карт компонента
+     */
+    align?: 'bottom' | 'default';
+
+    /**
      * Обработчик клика по иконке 'показать номер карты'
      */
     onEyeIconClick?: () => void;
@@ -65,13 +70,14 @@ export const Text: React.FC<TextProps> = ({
     cardholderName,
     maskedCardNumber,
     numberOfСards,
+    align,
     eyeButton,
     dataTestId,
     size = 164,
     onEyeIconClick,
 }) => {
     const maxSize = size === 164;
-    const visibleNumberOfСards = showNumberOfСards(size, numberOfСards);
+    const visibleNumberOfСards = showNumberOfСards(size, numberOfСards, align);
 
     return (
         <div className={cn(styles.component)} data-test-id={dataTestId}>
@@ -116,7 +122,7 @@ export const Text: React.FC<TextProps> = ({
                     <Typography.Text
                         view={TYPOGRAPHY_VIEW_FOR_SIZE[size]}
                         weight='medium'
-                        color='static-primary-light'
+                        color='static-primary-dark'
                     >
                         {`+${numberOfСards}\u00A0`}
                         {pluralize(numberOfСards || 0, 'карта', 'карты', 'карт')}

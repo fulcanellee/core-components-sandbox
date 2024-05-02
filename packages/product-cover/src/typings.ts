@@ -99,6 +99,11 @@ export type SingleCommonProps = {
     numberOfСards?: number;
 
     /**
+     * Управление ориентацией стопки карт компонента
+     */
+    align?: 'bottom' | 'default';
+
+    /**
      * Слот для кастомного контента компонента
      */
     contentAddons?: ReactNode;
@@ -119,11 +124,11 @@ export type SingleCommonProps = {
     dataTestId?: string;
 };
 
-export type SingleProps = Omit<SingleCommonProps, 'numberOfСards'>;
+export type SingleProps = Omit<SingleCommonProps, 'numberOfСards' | 'align'>;
 
 export type BankCardImageProps = Omit<
     SingleCommonProps,
-    'size' | 'numberOfСards' | 'className' | 'dataTestId'
+    'size' | 'numberOfСards' | 'className' | 'dataTestId' | 'align'
 >;
 
 export type SizeStack = Exclude<Size, 48 | 96 | 164>;

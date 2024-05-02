@@ -24,6 +24,7 @@ export const Single: FC<SingleCommonProps> = ({
     cardholderNameUppercase,
     cardholderName,
     numberOfСards,
+    align,
     maskedCardNumber,
     className,
     contentAddons,
@@ -31,7 +32,8 @@ export const Single: FC<SingleCommonProps> = ({
     onEyeIconClick,
     dataTestId,
 }) => {
-    const showContent = (maskedCardNumber || cardholderName) && size !== 16 && !contentAddons;
+    const hasContent = Boolean(maskedCardNumber || cardholderName || numberOfСards);
+    const showContent = hasContent && size !== 16 && !contentAddons;
 
     return (
         <div
@@ -50,7 +52,7 @@ export const Single: FC<SingleCommonProps> = ({
             {borderColor && (
                 <div
                     className={cn(styles.border)}
-                    style={{ boxShadow: `inset 0 0 0 2px ${borderColor}` }}
+                    style={{ boxShadow: `inset 0 0 0 1px ${borderColor}` }}
                 />
             )}
 
@@ -70,6 +72,7 @@ export const Single: FC<SingleCommonProps> = ({
                     cardholderNameUppercase={cardholderNameUppercase}
                     cardholderName={cardholderName}
                     numberOfСards={numberOfСards}
+                    align={align}
                     size={size}
                     onEyeIconClick={onEyeIconClick}
                     dataTestId={getDataTestId(dataTestId, 'user-info')}

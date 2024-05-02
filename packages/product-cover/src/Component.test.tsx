@@ -107,7 +107,7 @@ describe('ProductCover', () => {
             const { container } = render(<ProductCover.Single borderColor='red' />);
 
             expect(container.querySelector('.border')).toHaveStyle({
-                boxShadow: 'inset 0 0 0 2px red',
+                boxShadow: 'inset 0 0 0 1px red',
             });
         });
 
