@@ -27,7 +27,16 @@ export const BaseOption: FC<OptionProps> = ({
 
     const renderCheckmark = () => {
         if (Checkmark && showCheckMark) {
-            return <Checkmark disabled={disabled} selected={selected} multiple={multiple} />;
+            return (
+                <Checkmark
+                    className={cn({
+                        [styles.checkmarkBeforeContent]: checkmarkPosition === 'before',
+                    })}
+                    disabled={disabled}
+                    selected={selected}
+                    multiple={multiple}
+                />
+            );
         }
 
         return null;
