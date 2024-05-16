@@ -42,7 +42,7 @@ jobs:
           git config user.name core-ds-bot
           git config user.email ds@gitmax.tech
           yarn --new-version version ${{ github.event.inputs.version }}
-          git push origin master
+          git push
 #          git push origin v${{ github.event.inputs.version }}
 #
 #      - name: Publish
