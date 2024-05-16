@@ -35,14 +35,14 @@ jobs:
         run: |
           cd ./packages/stack-context
           yarn build
-#
-#      - name: Set version
-#        if: success()
-#        run: |
-#          git config user.name core-ds-bot
-#          git config user.email ds@gitmax.tech
-#          npm version ${{ github.event.inputs.version }}
-#          git push origin master
+
+      - name: Set version
+        if: success()
+        run: |
+          git config user.name core-ds-bot
+          git config user.email ds@gitmax.tech
+          yarn --new-version version ${{ github.event.inputs.version }}
+          git push origin master
 #          git push origin v${{ github.event.inputs.version }}
 #
 #      - name: Publish
