@@ -45,9 +45,11 @@ jobs:
           yarn --new-version version ${{ github.event.inputs.version }}
           git push
 #          git push origin v${{ github.event.inputs.version }}
-#
-#      - name: Publish
-#        if: success()
-#        run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish
+        if: success()
+        run: |
+          cd ./packages/stack-context
+          npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
